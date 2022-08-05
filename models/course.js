@@ -1,8 +1,8 @@
 const { Model, DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-    class Courses extends Model {}
-    Courses.init({
+    class Course extends Model {}
+    Course.init({
         title: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -39,5 +39,5 @@ module.exports = (sequelize) => {
     //     });  
     // }
 
-    return Courses;
+    return Course;
 }
