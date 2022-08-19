@@ -13,10 +13,13 @@ const enableGlobalErrorLogging = process.env.ENABLE_GLOBAL_ERROR_LOGGING === 'tr
 // create the Express app
 const app = express();
 
+// Setup request body JSON parsing.
+app.use(express.json())
+
 // setup morgan which gives us http request logging
 app.use(morgan('dev'));
 
-app.use('/api', users);
+//app.use('/api', users);
 app.use('/api', courses);
 
 // setup a friendly greeting for the root route
@@ -53,14 +56,14 @@ app.set('port', process.env.PORT || 5000);
   try {
     await sequelize.authenticate();
     console.log('Connection successfully established.');
-    await sequelize.sync();
-    console.log('Synchronizing the models with the database.');
   } catch(error) {
     console.log('The connection failed to establish: ' + error);
   }
 })();
 
-// start listening on our port
-const server = app.listen(app.get('port'), () => {
-  console.log(`Express server is listening on port ${server.address().port}`);
+// sync database THEN start listening on our port
+sequelize.sync().then( () => {
+  const server = app.listen(app.get('port'), () => {
+    console.log(`Express server is listening on port ${server.address().port}`);
+  })
 });

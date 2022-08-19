@@ -3,6 +3,11 @@ const { Model, DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
     class Course extends Model {}
     Course.init({
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true,
+        },
         title: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -29,15 +34,15 @@ module.exports = (sequelize) => {
         },
     }, { sequelize });
 
-    // Course.associate = (models) => {
-    //     Course.belongsTo(models.User, {
-    //         as: "userId",
-    //         foreignKey: {
-    //             name: "id",
-    //             allowNull: false,
-    //         },
-    //     });  
-    // }
+    Course.associate = (models) => {
+        Course.belongsTo(models.User, {
+            as: "user",
+            foreignKey: {
+                name: "id",
+                allowNull: false,
+            },
+        });  
+    }
 
     return Course;
 }

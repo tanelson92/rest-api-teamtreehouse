@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const asyncHandler = require('../src/js/async.js');
+const asyncHandler = require('../middleware/async.js');
 const Course = require('../models').Course;
 
 //Route that returns all Courses including the User associated with each course and a 200 HTTP status code.
