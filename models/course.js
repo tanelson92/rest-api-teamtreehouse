@@ -33,7 +33,7 @@ module.exports = (sequelize) => {
     //     Course.belongsTo(models.User, {
     //         as: "userId",
     //         foreignKey: {
-    //             fieldName: "id",
+    //             name: "id",
     //             allowNull: false,
     //         },
     //     });  

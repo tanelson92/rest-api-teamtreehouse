@@ -15,6 +15,7 @@ if (config.use_env_variable) {
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
+// console.log('Joining Models...');
 fs
   .readdirSync(__dirname)
   .filter(file => {
@@ -23,6 +24,7 @@ fs
   .forEach(file => {
     const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
     db[model.name] = model;
+    // console.log(db[model.name]);
   });
 
 Object.keys(db).forEach(modelName => {

@@ -10,39 +10,39 @@ module.exports = (sequelize) => {
         },
         firstName: {
             type: DataTypes.STRING,
-            // allowNull: false,
-            // validate: {
-            //     notEmpty: {
-            //         msg: '"First Name" cannot be empty.'
-            //     }
-            // }
+            allowNull: false,
+            validate: {
+                notEmpty: {
+                    msg: '"First Name" cannot be empty.'
+                }
+            }
         },
         lastName: {
             type: DataTypes.STRING,
-            // allowNull: false,
-            // validate: {
-            //     notEmpty: {
-            //         msg: '"Last Name" cannot be empty.'
-            //     }
-            // }
+            allowNull: false,
+            validate: {
+                notEmpty: {
+                    msg: '"Last Name" cannot be empty.'
+                }
+            }
         },
         emailAddress: {
             type: DataTypes.STRING,
-            // allowNull: false,
-            // validate: {
-            //     notEmpty: {
-            //         msg: '"Email Address cannot be empty."'
-            //     }
-            // }
+            allowNull: false,
+            validate: {
+                notEmpty: {
+                    msg: '"Email Address cannot be empty."'
+                }
+            }
         },
         password: {
             type: DataTypes.STRING,
-            // allowNull: false,
-            // validate: {
-            //     notEmpty: {
-            //         msg: '"Password must be provided."'
-            //     }
-            // }
+            allowNull: false,
+            validate: {
+                notEmpty: {
+                    msg: '"Password must be provided."'
+                }
+            }
         },
     }, { sequelize });
 
@@ -50,7 +50,7 @@ module.exports = (sequelize) => {
     //     User.hasMany(models.Course, {
     //         as: "userId",
     //         foreignKey: {
-    //             fieldName: "id",
+    //             name: "id",
     //             allowNull: false,
     //         }
     //     });
